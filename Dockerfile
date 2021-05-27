@@ -1,12 +1,12 @@
-ARG VARIANT
+ARG VARIANT=stable-slim
 FROM debian:${VARIANT}
 
 # Will not prompt for questions
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG USERNAME
-ARG USER_UID
-ARG USER_GID
+ARG USERNAME=node
+ARG USER_UID=1000
+ARG USER_GID=1000
 
 RUN apt-get update \
     && apt-get install -y sudo wget curl software-properties-common git vim
@@ -27,7 +27,7 @@ USER $USERNAME
 WORKDIR /home/"${USERNAME}"
 ENV HOME /home/"${USERNAME}"
 
-ARG THEME
+ARG THEME=https://github.com/denysdovhan/spaceship-prompt
 RUN mkdir ~/.npm-global
 RUN npm config set prefix '~/.npm-global'
 
