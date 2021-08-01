@@ -3,6 +3,7 @@ FROM debian:${VARIANT}
 
 # Will not prompt for questions
 ARG DEBIAN_FRONTEND=noninteractive
+ARG DIRECTORY=/workspace
 
 ARG USERNAME=node
 ARG USER_UID=1000
@@ -49,3 +50,6 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 
 RUN echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.zshrc
 RUN echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.bashrc
+RUN sudo mkdir -p ${DIRECTORY}
+WORKDIR ${DIRECTORY}
+RUN sudo chown -R ${USERNAME} ${DIRECTORY}
