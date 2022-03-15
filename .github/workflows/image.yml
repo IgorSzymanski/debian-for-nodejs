@@ -22,5 +22,5 @@ jobs:
         run: |
           docker buildx build --push \
           --tag iszymanski/debian-for-nodejs:latest \
-          --tag iszymanski/debian-for-nodejs:0.1 \
+          --tag iszymanski/debian-for-nodejs:0.1.2 \
           --platform linux/amd64,linux/arm64 .
