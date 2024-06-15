@@ -12,7 +12,7 @@ ARG USER_GID=1000
 RUN apt-get update \
     && apt-get install -y sudo wget curl software-properties-common git vim
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | sudo bash -
 RUN apt-get install -y nodejs
 
 RUN useradd -m $USERNAME && echo "$USERNAME:$USERNAME" | chpasswd && adduser $USERNAME sudo
@@ -34,7 +34,7 @@ RUN npm config set prefix '~/.npm-global'
 
 RUN npm install --global yarn
 
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- \
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.0/zsh-in-docker.sh)" -- \
     -t $THEME \
     -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
     -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
